@@ -1,3 +1,8 @@
+:root {
+    --white: rgb(255, 255, 255);
+    --grey: rgb(244, 244, 244);
+}
+
 *,
 *::before,
 *::after {
@@ -19,20 +24,67 @@ body {
 
 #main-container {
     flex-grow: 1;
+    background-color: var(--grey);
 }
 
+/* Header */
+
 #header {
+    font-size: 24px;
+    font-weight: bold;
+
     min-height: 50px;
-    background-color: green;
+    background-color: var(--white);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+/* Footer */
 
 #footer {
     min-height: 50px;
-    background-color: blue;
+    background-color: var(--white);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#main {
-    background-color: red;
+/* Page container */
+
+#main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-/* Page container*/
+#game-board-container {
+    padding: 50px 0 0;
+
+    display: grid;
+    grid-template-columns: repeat(3, minmax(100px, 150px));
+    grid-template-rows: repeat(3, minmax(100px, 150px));
+
+}
+
+.game-board-cell {
+    border: 2px solid black;
+}
+
+.game-board-cell[data-row="1"] {
+    border-top: none;
+}
+
+.game-board-cell[data-row="3"] {
+    border-bottom: none;
+}
+
+.game-board-cell[data-column="1"] {
+    border-left: none;
+}
+
+.game-board-cell[data-column="3"] {
+    border-right: none;
+}

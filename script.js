@@ -130,5 +130,19 @@ const player2 = createPlayer("Ali", "O");
 // DOM Manipulation //
 
 const mainContainer = document.querySelector("#main-container");
+
 const gameBoardContainer = document.createElement("div");
-gameBoardContainer.textContent = "test";
+gameBoardContainer.id = "game-board-container";
+mainContainer.appendChild(gameBoardContainer);
+
+for (let i = 0; i < 9; i++) {
+  const gameBoardCell = document.createElement("div");
+  gameBoardCell.className = "game-board-cell";
+  
+  gameBoardCell.setAttribute("data-row", Math.floor(i / 3) + 1);
+  gameBoardCell.setAttribute("data-column", (i % 3) + 1);
+
+  
+
+  gameBoardContainer.appendChild(gameBoardCell);
+}
