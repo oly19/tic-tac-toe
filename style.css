@@ -1,0 +1,38 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+#main-container {
+    flex-grow: 1;
+}
+
+#header {
+    min-height: 50px;
+    background-color: green;
+}
+
+#footer {
+    min-height: 50px;
+    background-color: blue;
+}
+
+#main {
+    background-color: red;
+}
+
+/* Page container*/
