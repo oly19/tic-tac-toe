@@ -1,6 +1,6 @@
 :root {
     --white: rgb(255, 255, 255);
-    --grey: rgb(244, 244, 244);
+    --grey: rgb(232, 225, 225);
 }
 
 *,
@@ -55,36 +55,93 @@ body {
 /* Page container */
 
 #main-container {
+    align-items: center;
+
     display: flex;
     flex-direction: column;
+    justify-content: space-evenly;
+}
+
+/*
+#players-container {
+    gap: 10px;
+    padding-top: 20px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.player-container {
+    text-align: center;
+    border: 1px solid black;
+    border-radius: 20px;
+    padding: 5px 10px;
+    background-color: var(--white);
+}
+*/
+#start-game-button {
+    font-size: 32px;
+    font-weight: bold;
+    padding: 10px 25px;
+    border-radius: 15px;
+    background-color: var(--white);
+    border: 1px solid black;
+}
+
+
+#input-players-names-dialogue {
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+}
+
+#input-players-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
+    gap: 20px;
+    font-size: 20px;
+    width: 250px;
+    height: 200px;
+    padding: 10px;
 }
 
-#game-board-container {
-    padding: 50px 0 0;
-
-    display: grid;
-    grid-template-columns: repeat(3, minmax(100px, 150px));
-    grid-template-rows: repeat(3, minmax(100px, 150px));
-
+input {
+    padding: 4px 8px;
+    font-size: 16px;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid black;
 }
 
-.game-board-cell {
-    border: 2px solid black;
+#form-title {}
+
+#input-players-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 }
 
-.game-board-cell[data-row="1"] {
-    border-top: none;
+.input-player-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.game-board-cell[data-row="3"] {
-    border-bottom: none;
+#input-players-form>.buttons {
+    display: flex;
+    justify-content: space-around;
 }
 
-.game-board-cell[data-column="1"] {
-    border-left: none;
-}
-
-.game-board-cell[data-column="3"] {
-    border-right: none;
+#input-players-form button {
+    height: 30px;
+    width: 100px;
+    border: 1px solid black;
+    border-radius: 8px;
+    font-size: 15px;
 }

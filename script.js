@@ -118,31 +118,71 @@ const Gameboard = (function () {
 })();
 
 
-
 function createPlayer(name, sign) {
   return { name, sign };
 }
 
-const player1 = createPlayer("Omar", "X");
-const player2 = createPlayer("Ali", "O");
+
 
 
 // DOM Manipulation //
 
 const mainContainer = document.querySelector("#main-container");
+const startGameButton = document.querySelector("#start-game-button");
 
-const gameBoardContainer = document.createElement("div");
-gameBoardContainer.id = "game-board-container";
-mainContainer.appendChild(gameBoardContainer);
+startGameButton.addEventListener("click", () => {
+  startGameButton.remove()
 
-for (let i = 0; i < 9; i++) {
-  const gameBoardCell = document.createElement("div");
-  gameBoardCell.className = "game-board-cell";
-  
-  gameBoardCell.setAttribute("data-row", Math.floor(i / 3) + 1);
-  gameBoardCell.setAttribute("data-column", (i % 3) + 1);
+  const startGameButtonDialogue = document.getElementById("input-players-names-dialogue");
+  startGameButtonDialogue.showModal()
+})
 
-  
 
-  gameBoardContainer.appendChild(gameBoardCell);
-}
+const submitPlayersInput = document.getElementById("submit-form-button");
+submitPlayersInput.addEventListener("click", () => {
+  const gameBoardContainer = document.createElement("div");
+  gameBoardContainer.id = "game-board-container";
+  gameBoardContainer.style.display = "grid";
+  gameBoardContainer.style.gridTemplateColumns = "repeat(3, minmax(100px, 150px))";
+  gameBoardContainer.style.gridTemplateRows = "repeat(3, minmax(100px, 150px))";
+  mainContainer.appendChild(gameBoardContainer)
+
+  for (let i = 0; i < 9; i++) {
+    const gameBoardCell = document.createElement("div");
+    gameBoardCell.className = "game-board-cell";
+    
+    gameBoardCell.setAttribute("data-row", Math.floor(i / 3) + 1);
+    gameBoardCell.setAttribute("data-column", (i % 3) + 1);
+
+    gameBoardCell.style.border = "solid 1px black";
+
+    gameBoardContainer.appendChild(gameBoardCell);
+  }
+
+  gameBoardContainer.querySelectorAll(".game-board-cell[data-row='1']").forEach((element) => {
+    element.style["border-top"] = "none"
+  })
+  gameBoardContainer.querySelectorAll(".game-board-cell[data-row='3']").forEach((element) => {
+    element.style["border-bottom"] = "none"
+  })
+  gameBoardContainer.querySelectorAll(".game-board-cell[data-column='1']").forEach((element) => {
+    element.style["border-left"] = "none"
+  })  
+  gameBoardContainer.querySelectorAll(".game-board-cell[data-column='3']").forEach((element) => {
+    element.style["border-right"] = "none"
+  })
+})
+
+
+const player1 = createPlayer("Omarrrr", "X");
+const player2 = createPlayer("Ali", "O");
+
+
+
+// const playerOneContainer = document.querySelector('.player-container[data-player="1"]');
+// playerOneContainer.textContent = `${player1.name} (${player1.sign})`
+
+// const playerTwoContainer = document.querySelector('.player-container[data-player="2"]');
+// playerTwoContainer.textContent = `${player2.name} (${player2.sign})`
+
+
