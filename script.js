@@ -1,4 +1,5 @@
 const Gameboard = (function () {
+  
   const currentGameBoard = [
     [null, null, null], 
     [null, null, null], 
@@ -113,7 +114,7 @@ const Gameboard = (function () {
     checkIfGameIsTied()
   };
 
-  return { getScore, playTurn, trackTurnOrder};
+  return { getScore, playTurn, trackTurnOrder };
 
 })();
 
@@ -130,6 +131,8 @@ function createPlayer(name, sign) {
 const mainContainer = document.querySelector("#main-container");
 const startGameButton = document.querySelector("#start-game-button");
 
+
+// Display modal and remove button uppon click
 startGameButton.addEventListener("click", () => {
   startGameButton.remove()
 
@@ -154,10 +157,23 @@ submitPlayersInput.addEventListener("click", () => {
     gameBoardCell.setAttribute("data-row", Math.floor(i / 3) + 1);
     gameBoardCell.setAttribute("data-column", (i % 3) + 1);
 
-    gameBoardCell.style.border = "solid 1px black";
+    addEventListenerForCellAttribute(gameBoardCell)
 
     gameBoardContainer.appendChild(gameBoardCell);
   }
+<<<<<<< HEAD
+=======
+
+  
+  
+}
+
+function addEventListenerForCellAttribute(gameBoardCell) {
+    gameBoardCell.addEventListener("click", (div) => {
+    gameBoardCell.textContent = "X"
+  });
+}
+>>>>>>> 3350390 (Move game board cells borders logic from javascript to css)
 
   gameBoardContainer.querySelectorAll(".game-board-cell[data-row='1']").forEach((element) => {
     element.style["border-top"] = "none"
@@ -171,11 +187,96 @@ submitPlayersInput.addEventListener("click", () => {
   gameBoardContainer.querySelectorAll(".game-board-cell[data-column='3']").forEach((element) => {
     element.style["border-right"] = "none"
   })
+<<<<<<< HEAD
 })
 
 
 const player1 = createPlayer("Omarrrr", "X");
 const player2 = createPlayer("Ali", "O");
+=======
+}
+
+function getPlayersData () {
+  const playersContainer = document.querySelector("#input-players-container")
+  const player1Container = playersContainer.querySelector("div:first-child");
+  const player2Container = playersContainer.querySelector("div:last-child");
+  
+  return {
+    "player1": {
+      "name": player1Container.querySelector("#player1").value || "Player 1",
+      "sign": player1Container.querySelector("#player1 + label").textContent
+    },
+    "player2": {
+      "name": player2Container.querySelector("#player2").value || "Player 2",
+      "sign": player2Container.querySelector("#player2 + label").textContent
+    }
+  }
+}
+
+function createPlayerScoreContainer (player1Name, player2Name) {
+  const playerScoreDiv = document.createElement("div");
+
+  const player1Container = document.createElement("div");
+  const player2Container = document.createElement("div");
+
+  const player1ContainerName = document.createElement("div");
+  const player2ContainerName = document.createElement("div");
+  
+  const player1ContainerScore = document.createElement("div");
+  const player2ContainerScore = document.createElement("div");
+
+  playerScoreDiv.id = "players-score-container";
+
+  player1Container.id = "player1-container";
+  player2Container.id = "player2-container";
+
+  player1ContainerName.id = "player1-container-name";
+  player2ContainerName.id = "player2-container-name";
+  
+  player1ContainerScore.id = "player1-container-score";
+  player2ContainerScore.id = "player2-container-score";
+  
+  player1ContainerName.textContent = player1Name;
+  player2ContainerName.textContent = player2Name;
+
+  player1ContainerScore.textContent = "0";
+  player2ContainerScore.textContent = "0";
+
+  player1Container.appendChild(player1ContainerName);
+  player1Container.appendChild(player1ContainerScore);
+
+  player2Container.appendChild(player2ContainerName);
+  player2Container.appendChild(player2ContainerScore);
+
+  playerScoreDiv.appendChild(player1Container);
+  playerScoreDiv.appendChild(player2Container);
+
+  mainContainer.appendChild(playerScoreDiv)
+}
+
+// Get player data and display board container + players container
+const submitPlayersInput = document.getElementById("submit-form-button");
+submitPlayersInput.addEventListener("click", () => {
+  const playersData = getPlayersData()
+  const gameBoardContainer = createBoardContainer()
+  setCellAttribute(gameBoardContainer)
+  //adjustCellBorder(gameBoardContainer)
+  createPlayerScoreContainer(
+    playersData["player1"]["name"],
+    playersData["player2"]["name"]
+  )
+})
+
+
+
+
+
+
+
+
+// const player1 = createPlayer("Omar", "X");
+// const player2 = createPlayer("Ali", "O");
+>>>>>>> 3350390 (Move game board cells borders logic from javascript to css)
 
 
 

@@ -144,4 +144,52 @@ input {
     border: 1px solid black;
     border-radius: 8px;
     font-size: 15px;
+<<<<<<< HEAD
+=======
+}
+
+#players-score-container {
+    display: flex;
+    
+    gap: 40px;
+} 
+
+#players-score-container > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+
+    background-color: white;
+    width: 200px;
+    padding: 10px 15px;
+    border: 1px black solid;
+    border-radius: 10px;
+}
+
+
+.game-board-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 40px;
+    border: solid 1px black;
+}
+
+.game-board-cell[data-row='1'] {
+    border-top: none;
+}
+
+.game-board-cell[data-row='3'] {
+    border-bottom: none;
+}
+
+.game-board-cell[data-column='1'] {
+    border-left: none;
+}
+
+.game-board-cell[data-column='3'] {
+    border-right: none;
+>>>>>>> 3350390 (Move game board cells borders logic from javascript to css)
 }
