@@ -144,8 +144,6 @@ input {
     border: 1px solid black;
     border-radius: 8px;
     font-size: 15px;
-<<<<<<< HEAD
-=======
 }
 
 #players-score-container {
@@ -191,5 +189,4 @@ input {
 
 .game-board-cell[data-column='3'] {
     border-right: none;
->>>>>>> 3350390 (Move game board cells borders logic from javascript to css)
 }

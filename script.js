@@ -141,8 +141,7 @@ startGameButton.addEventListener("click", () => {
 })
 
 
-const submitPlayersInput = document.getElementById("submit-form-button");
-submitPlayersInput.addEventListener("click", () => {
+function createBoardContainer() {
   const gameBoardContainer = document.createElement("div");
   gameBoardContainer.id = "game-board-container";
   gameBoardContainer.style.display = "grid";
@@ -161,39 +160,14 @@ submitPlayersInput.addEventListener("click", () => {
 
     gameBoardContainer.appendChild(gameBoardCell);
   }
-<<<<<<< HEAD
-=======
+} 
 
-  
-  
-}
+
 
 function addEventListenerForCellAttribute(gameBoardCell) {
     gameBoardCell.addEventListener("click", (div) => {
     gameBoardCell.textContent = "X"
   });
-}
->>>>>>> 3350390 (Move game board cells borders logic from javascript to css)
-
-  gameBoardContainer.querySelectorAll(".game-board-cell[data-row='1']").forEach((element) => {
-    element.style["border-top"] = "none"
-  })
-  gameBoardContainer.querySelectorAll(".game-board-cell[data-row='3']").forEach((element) => {
-    element.style["border-bottom"] = "none"
-  })
-  gameBoardContainer.querySelectorAll(".game-board-cell[data-column='1']").forEach((element) => {
-    element.style["border-left"] = "none"
-  })  
-  gameBoardContainer.querySelectorAll(".game-board-cell[data-column='3']").forEach((element) => {
-    element.style["border-right"] = "none"
-  })
-<<<<<<< HEAD
-})
-
-
-const player1 = createPlayer("Omarrrr", "X");
-const player2 = createPlayer("Ali", "O");
-=======
 }
 
 function getPlayersData () {
@@ -257,10 +231,14 @@ function createPlayerScoreContainer (player1Name, player2Name) {
 // Get player data and display board container + players container
 const submitPlayersInput = document.getElementById("submit-form-button");
 submitPlayersInput.addEventListener("click", () => {
+
+  // Get modal player data before destructing it
   const playersData = getPlayersData()
+
+  // Create Game Board Container for the game
   const gameBoardContainer = createBoardContainer()
-  setCellAttribute(gameBoardContainer)
-  //adjustCellBorder(gameBoardContainer)
+
+  // Create a Score Container
   createPlayerScoreContainer(
     playersData["player1"]["name"],
     playersData["player2"]["name"]
@@ -276,7 +254,6 @@ submitPlayersInput.addEventListener("click", () => {
 
 // const player1 = createPlayer("Omar", "X");
 // const player2 = createPlayer("Ali", "O");
->>>>>>> 3350390 (Move game board cells borders logic from javascript to css)
 
 
 
