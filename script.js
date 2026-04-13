@@ -141,34 +141,6 @@ startGameButton.addEventListener("click", () => {
 })
 
 
-function createBoardContainer() {
-  const gameBoardContainer = document.createElement("div");
-  gameBoardContainer.id = "game-board-container";
-  gameBoardContainer.style.display = "grid";
-  gameBoardContainer.style.gridTemplateColumns = "repeat(3, minmax(100px, 150px))";
-  gameBoardContainer.style.gridTemplateRows = "repeat(3, minmax(100px, 150px))";
-  mainContainer.appendChild(gameBoardContainer)
-
-  for (let i = 0; i < 9; i++) {
-    const gameBoardCell = document.createElement("div");
-    gameBoardCell.className = "game-board-cell";
-    
-    gameBoardCell.setAttribute("data-row", Math.floor(i / 3) + 1);
-    gameBoardCell.setAttribute("data-column", (i % 3) + 1);
-
-    addEventListenerForCellAttribute(gameBoardCell)
-
-    gameBoardContainer.appendChild(gameBoardCell);
-  }
-} 
-
-
-
-function addEventListenerForCellAttribute(gameBoardCell) {
-    gameBoardCell.addEventListener("click", (div) => {
-    gameBoardCell.textContent = "X"
-  });
-}
 
 function getPlayersData () {
   const playersContainer = document.querySelector("#input-players-container")
@@ -227,6 +199,33 @@ function createPlayerScoreContainer (player1Name, player2Name) {
 
   mainContainer.appendChild(playerScoreDiv)
 }
+
+function createBoardContainer() {
+  const gameBoardContainer = document.createElement("div");
+  gameBoardContainer.id = "game-board-container";
+  gameBoardContainer.style.display = "grid";
+  gameBoardContainer.style.gridTemplateColumns = "repeat(3, minmax(100px, 150px))";
+  gameBoardContainer.style.gridTemplateRows = "repeat(3, minmax(100px, 150px))";
+  mainContainer.appendChild(gameBoardContainer)
+
+  function addEventListenerForCellAttribute(gameBoardCell) {
+      gameBoardCell.addEventListener("click", (div) => {
+      gameBoardCell.textContent = "X"
+    });
+  }
+
+  for (let i = 0; i < 9; i++) {
+    const gameBoardCell = document.createElement("div");
+    gameBoardCell.className = "game-board-cell";
+    
+    gameBoardCell.setAttribute("data-row", Math.floor(i / 3) + 1);
+    gameBoardCell.setAttribute("data-column", (i % 3) + 1);
+
+    addEventListenerForCellAttribute(gameBoardCell)
+
+    gameBoardContainer.appendChild(gameBoardCell);
+  }
+} 
 
 // Get player data and display board container + players container
 const submitPlayersInput = document.getElementById("submit-form-button");
